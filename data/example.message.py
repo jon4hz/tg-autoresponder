@@ -1,2 +1,3 @@
 text='''
-This is an automated message'''
+This is an automated message
+'''

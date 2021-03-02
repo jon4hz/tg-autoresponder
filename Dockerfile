@@ -6,9 +6,7 @@ COPY requirements.txt ./
 RUN mkdir /usr/src/app/data
 RUN pip install --upgrade pip &&\ 
     pip install --no-cache-dir -r requirements.txt
-COPY autoresponder.py generate_session.py *.session ./
-COPY entrypoint.sh ./
-RUN chmod +x entrypoint.sh
+COPY autoresponder.py data/*.session ./
 RUN chown -R 1000. *
 USER 1000
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "python", "-u", "autoresponder.py" ]

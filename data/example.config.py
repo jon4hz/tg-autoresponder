@@ -9,6 +9,6 @@ config={
     },
     'autoresponder': {
         'excluded_users': [],
-        'timeout': 
+        'timeout': ''
     }
 }
