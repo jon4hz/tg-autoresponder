@@ -1,6 +1,4 @@
 *.session*
-data/message.py
-data/config.py
 __pycache__
 data/database.db
 dev/data/*

@@ -8,4 +8,5 @@ services:
         restart: unless-stopped
         volumes:
             - "./data:/usr/src/app/data"
-        
+        env_file:
+            - env_autoresponder

@@ -10,26 +10,33 @@ try:
     from datetime import datetime
     from telethon import TelegramClient, events
     from data.message import text as MESSAGE
-    from data.config import config
+    from data.config import config as config_file
 except ImportError as e:
     print(f'Error could not import modules - {e}')
 
-# Write config file from environment variables
+# check required vars
+if not os.environ.get('TELEGRAM_API_ID') or not os.environ.get('TELEGRAM_API_HASH') or not os.environ.get('TELEGRAM_PHONE'):
+    print("Error: Please set all environment variables!")
+    sys.exit(1)
+
+# Write config from environment variables
 try:
     config = {
         'telegram': {
-            'api_id': os.environ.get('TELEGRAM_API_ID',''),
-            'api_hash': os.environ.get('TELEGRAM_API_HASH',''),
-            'phone': os.environ.get('TELEGRAM_PHONE','')
+            'api_id': os.environ.get('TELEGRAM_API_ID'),
+            'api_hash': os.environ.get('TELEGRAM_API_HASH'),
+            'phone': os.environ.get('TELEGRAM_PHONE')
         },
         'database': {
-            'file': os.environ.get('DATABASE_FILE','')
+            'file': os.environ.get('DATABASE_FILE','data/database.db')
         },
         'autoresponder': {
-            'excluded_users': [],
-            'timeout': os.environ.get('AUTORESPONDER_TIMEOUT','1') # in minutes
+            'timeout': os.environ.get('AUTORESPONDER_TIMEOUT','60') # in minutes
         }
     }
+except Exception as e:
+    print(f'{datetime.utcnow()} - Error: {e}')
+    sys.exit(1)
 
 # Reading configs
 try:
@@ -40,10 +47,10 @@ try:
     # DB
     DB_FILE = config['database']['file']
     # Autoresponder
-    EXCLUDED_USERS = config['autoresponder']['excluded_users']
+    EXCLUDED_USERS = config_file['autoresponder']['excluded_users']
     TIMEOUT = config['autoresponder']['timeout']
 except Exception as e:
-    print(f'{datetime.utcnow()} - Error: Could not read variables from config file.\n - Missing Key: {e}')
+    print(f'{datetime.utcnow()} - Error: Could not read variables from config \n - Missing Key: {e}')
     sys.exit(1)
 
 # create client
