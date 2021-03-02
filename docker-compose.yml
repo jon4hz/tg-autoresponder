@@ -1,0 +1,11 @@
+---
+version: '3'
+services:
+    autoresponder:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        volumes:
+            - "./data:/usr/src/app/data"
+        
