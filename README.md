@@ -32,3 +32,18 @@ The message which will be sent is located in `./data/message.py`. After editing 
 
 ### Exclude users
 There is an option to exclude users from receiving the automated message. Add a users Telegram ID in the `excluded_users` array in the file `./data/config.py`.
+
+## Contribute
+This is an open source project which welcomes any kind of contributions. 
+### Contributors 
+[![Contributors](https://contributors-img.web.app/image?repo=jon4hz/tg-autoresponder)](https://github.com/jon4hz/tg-autoresponder/graphs/contributors)
+## Donate
+Feel free to support my development if you like it.
+### Buy me a coffee
+
+<a href="https://www.buymeacoffee.com/jon4hz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+### Crypto
+```
+XMR: 82jT8bSjxpdQAJoDBv2ChA97FzwgvH9e7PrmukiroxrDduxkCJpoWNSJqAjZ7S4jJ1aFzHxnud4xYb3peNq6qLwo4irT7mv
+```
