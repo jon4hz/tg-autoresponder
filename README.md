@@ -41,7 +41,7 @@ This is an open source project which welcomes any kind of contributions.
 Feel free to support my development if you like it.
 ### Buy me a coffee
 
-<a href="https://www.buymeacoffee.com/jon4hz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+<a href="https://www.buymeacoffee.com/jon4hz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 108px !important;" ></a>
 
 ### Crypto
 ```
