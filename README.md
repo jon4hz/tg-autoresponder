@@ -14,10 +14,10 @@ To build the image use `sudo docker-compose build`
 ### Environment variables
 Set all required variables in the file `env_autoresponder`.
 
-| Var | Function | Default |
+| Variable | Function | Default |
 | --- | --- | --- |
-| TELEGRAM_API_ID | Telegarm API ID | - |
-| TELEGRAM_API_HASH | Telegarm API HASH | - |
+| TELEGRAM_API_ID | Your Telegram API ID | - |
+| TELEGRAM_API_HASH | Your Telegram API HASH | - |
 | TELEGRAM_PHONE | Your phone number | - |
 | DATABASE_FILE | Location of the database file | data/database.db |
 | AUTORESPONDER_TIMEOUT | Timeout in minutes | 60 |
@@ -31,4 +31,4 @@ After that it stores the session file and the container can be started in the ba
 The message which will be sent is located in `./data/message.py`. After editing the message, restart the container with `sudo docker-compose restart`.
 
 ### Exclude users
-There is an option to exclude users from receiving the automated message. Add a users telegram id in the `excluded_users` array in the file `./data/config.py`.
+There is an option to exclude users from receiving the automated message. Add a users Telegram ID in the `excluded_users` array in the file `./data/config.py`.
