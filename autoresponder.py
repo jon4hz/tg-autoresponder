@@ -14,6 +14,23 @@ try:
 except ImportError as e:
     print(f'Error could not import modules - {e}')
 
+# Write config file from environment variables
+try:
+    config = {
+        'telegram': {
+            'api_id': os.environ.get('TELEGRAM_API_ID',''),
+            'api_hash': os.environ.get('TELEGRAM_API_HASH',''),
+            'phone': os.environ.get('TELEGRAM_PHONE','')
+        },
+        'database': {
+            'file': os.environ.get('DATABASE_FILE','')
+        },
+        'autoresponder': {
+            'excluded_users': [],
+            'timeout': os.environ.get('AUTORESPONDER_TIMEOUT','1') # in minutes
+        }
+    }
+
 # Reading configs
 try:
     # telegram client credentials
@@ -29,14 +46,10 @@ except Exception as e:
     print(f'{datetime.utcnow()} - Error: Could not read variables from config file.\n - Missing Key: {e}')
     sys.exit(1)
 
-# check if session files exist
-if not os.path.isfile(f'data/{PHONE}.session'):
-    print("Session files not found! Please execute 'sudo docker-compose run autoresponder' to generate them!")
-    exit(1)
-
 # create client
 try:
     client = TelegramClient(f'data/{PHONE}', API_ID, API_HASH)
+    client.session.save()
 except Exception as e:
     print(f'{datetime.utcnow()} - Error: Could not create client. - {e}')
     sys.exit(1)
@@ -123,7 +136,15 @@ if __name__ == "__main__":
         asyncio.run(setup_inital_database(DB_FILE))
 
     # start the client
-    client.start()
+    try:
+        client.start()
+    except EOFError:
+        print(f'\n{datetime.utcnow()} - Error: Please generate the session file first. Execute "sudo docker-compose run autoresponder", fill the informations and start the container again!.')
+        sys.exit(1)
+    except Exception as e:
+        print(f'{datetime.utcnow()} - Error: Could not create client. - {e}')
+        sys.exit(1)
+
     print("Client started...")
     client.run_until_disconnected()
     print("Client closed...")
