@@ -6,6 +6,9 @@ The timeout is set for each user individually. The userbot only responds to mess
 
 ## Prerequisites
 To use the autoresponder you'll need to create a Telegram Application. Follow this [tutorial](https://core.telegram.org/api/obtaining_api_id) if you are unfamiliar with that.
+The following programs are also required:
+* `docker`
+* `docker-compose`
 
 ## Setup
 ### Build the image
